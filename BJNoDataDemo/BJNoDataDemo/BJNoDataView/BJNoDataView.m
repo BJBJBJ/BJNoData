@@ -13,7 +13,6 @@
 @end
 @implementation BJNoDataView
 
-static BJNoDataView* instance;
 +(void)animationPopupWith:(UIView*)aview duration:(CGFloat)duration{
     CAKeyframeAnimation* animation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
     animation.duration = duration ? duration : 0.5f;
@@ -37,7 +36,9 @@ static BJNoDataView* instance;
     }
     return _iconView;
 }
+
 +(BJNoDataView*)shareNoDataView{
+    static BJNoDataView* instance;
     if (!instance) {
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
@@ -55,8 +56,8 @@ static BJNoDataView* instance;
 }
 -(void)setFrame:(CGRect)frame{
     [super setFrame:frame];
-    _iconView.frame=CGRectMake(0, 0, 100, 100);
-    _iconView.center=self.center;
+    self.iconView.frame=CGRectMake(0, 0, 100, 100);
+    self.iconView.center=self.center;
 }
 -(void)showSuper:(UIView*)aview icon:(NSString*)icon{
     if (!aview){
@@ -94,7 +95,6 @@ static BJNoDataView* instance;
   [BJNoDataView animationPopupWith:self.iconView duration:AnimateDuration];
    !self.iconClicked ? :self.iconClicked();
 }
-
 -(void)clear{
    !self ?:[self removeFromSuperview];
 }

@@ -11,7 +11,6 @@
 typedef void(^iconClicked) ();
 @interface BJNoDataView : UIView
 
-
 +(BJNoDataView*)shareNoDataView;
 
 /**
