@@ -43,7 +43,7 @@
     if (![keyPath isEqualToString:@"dataArray"]) {
         return;
     }
-    if ([change[NSKeyValueChangeNewKey] count]==0) {//无数据
+    if ([self.dataArray count]==0) {//无数据
         [[BJNoDataView shareNoDataView] showCenterWithSuperView:self.tableView icon:nil iconClicked:^{
         //图片点击回调
         [self loadData];//刷新数据

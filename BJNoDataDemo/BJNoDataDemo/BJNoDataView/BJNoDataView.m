@@ -69,7 +69,6 @@ static BJNoDataView* instance;
     self.backgroundColor=aview.backgroundColor;
     [aview insertSubview:self atIndex:0];//插在父视图中的最底层(看情况设置)
     self.iconView.image=[UIImage imageNamed:icon];
-    [BJNoDataView animationPopupWith:self.iconView duration:AnimateDuration];
 }
 -(void)showCenterWithSuperView:(UIView*)aview icon:(NSString*)icon{
     [self showSuper:aview icon:icon];
@@ -92,6 +91,7 @@ static BJNoDataView* instance;
     };
 }
 -(void)imageViewClicked{
+  [BJNoDataView animationPopupWith:self.iconView duration:AnimateDuration];
    !self.iconClicked ? :self.iconClicked();
 }
 
