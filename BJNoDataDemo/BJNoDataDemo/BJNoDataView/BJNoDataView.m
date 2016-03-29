@@ -56,6 +56,7 @@
 }
 -(void)setFrame:(CGRect)frame{
     [super setFrame:frame];
+    //设置iconView的Frame
     self.iconView.frame=CGRectMake(0, 0, 100, 100);
     self.iconView.center=self.center;
 }
