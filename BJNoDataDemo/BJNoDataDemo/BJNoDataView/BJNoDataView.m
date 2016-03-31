@@ -5,7 +5,7 @@
 //  Created by zbj-mac on 16/3/25.
 //  Copyright © 2016年 zbj. All rights reserved.
 //
-#define AnimateDuration 0.25f
+#define kAnimateDuration 0.25f
 #import "BJNoDataView.h"
 @interface BJNoDataView()
 @property(nonatomic,strong)UIImageView*iconView;
@@ -96,8 +96,9 @@
     };
 }
 -(void)imageViewClicked{
-  [BJNoDataView animationPopupWith:self.iconView duration:AnimateDuration];
-   !self.iconClicked ? :self.iconClicked();
+    if (!self.iconClicked) return;
+    [BJNoDataView animationPopupWith:self.iconView duration:kAnimateDuration];
+    self.iconClicked();
 }
 -(void)clear{
    !self ?:[self removeFromSuperview];
