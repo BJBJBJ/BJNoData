@@ -12,7 +12,7 @@
 @property(nonatomic,copy)iconClicked iconClicked;
 @end
 @implementation BJNoDataView
-
+//图片点击动画
 +(void)animationPopupWith:(UIView*)aview duration:(CGFloat)duration{
     CAKeyframeAnimation* animation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
     animation.duration = duration ? duration : 0.5f;
@@ -47,7 +47,9 @@
     }
     return instance;
 }
-
++(instancetype)noDataView{
+    return [[self alloc] init];
+}
 -(instancetype)init{
     if (self=[super init]) {
         [self addSubview:self.iconView];
@@ -60,6 +62,7 @@
     self.iconView.frame=CGRectMake(0, 0, 100, 100);
     self.iconView.center=self.center;
 }
+#pragma mark----Method----
 -(void)showSuper:(UIView*)aview icon:(NSString*)icon{
     if (!aview){
         // 抛出异常
@@ -100,5 +103,11 @@
    !self ?:[self removeFromSuperview];
 }
 
-
+-(void)wipeOut{
+    for (UIView*bview in self.superview.subviews) {
+        if ([bview isKindOfClass:[BJNoDataView class]]) {
+            [bview removeFromSuperview];
+        }
+    }
+}
 @end

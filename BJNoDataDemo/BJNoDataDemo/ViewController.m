@@ -69,7 +69,6 @@
     if (!cell) {
         cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
     }
-    
     cell.textLabel.text=self.dataArray[indexPath.row];
     return cell;
 }
@@ -79,14 +78,13 @@
 }
 -(void)loadData{
     int count=arc4random() %3;
-
    NSMutableArray*mut=[[NSMutableArray alloc] init];
     for (int i=0; i<count; i++) {
         
     [mut addObject:[NSString stringWithFormat:@"第%d条数据",i]];
 //  [self.dataArray addObject:[NSString stringWithFormat:@"第%d条数据",i]];//不会触发KVO
     }
-    self.dataArray=mut;//数组指针改变 触发KVO
+     self.dataArray=mut;//数组指针改变 触发KVO
     NSLog(@"共%ld条数据",[self.dataArray count]);
     [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:YES];
 }

@@ -10,9 +10,22 @@
 
 typedef void(^iconClicked) ();
 @interface BJNoDataView : UIView
-
+#pragma mark----根据需求选择创建方式----
+/**
+ *  创建单例(全局实例一个对象)
+ *
+ *  @return BJNoDataView
+ */
 +(BJNoDataView*)shareNoDataView;
+/**
+ *  创建实例(全局可以实例多个对象)
+ *
+ *  @return BJNoDataView
+ */
++(instancetype)noDataView;
 
+
+#pragma mark----Method-----
 /**
  *  展示在父视图的中心
  *
@@ -50,7 +63,11 @@ typedef void(^iconClicked) ();
 -(void)showWithSuper:(UIView*)aview Frame:(CGRect)frame icon:(NSString*)icon iconClicked:(iconClicked)iconClicked;
 
 /**
- *  清除视图
+ *  清除视图（推荐）
  */
 -(void)clear;
+/**
+ *  彻底清除占位图
+ */
+-(void)wipeOut;
 @end
