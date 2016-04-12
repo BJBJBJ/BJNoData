@@ -30,6 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.tableView];
+    //KVO
     [self addObserver:self forKeyPath:@"dataArray" options:NSKeyValueObservingOptionNew context:nil];
     self.dataArray=[NSMutableArray array];
 }
@@ -38,7 +39,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-#pragma mark-----KVO----
+#pragma mark-----KVO回调----
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{
     if (![keyPath isEqualToString:@"dataArray"]) {
         return;
@@ -54,6 +55,7 @@
     [[BJNoDataView shareNoDataView] clear];
 }
 -(void)dealloc{
+    //移除KVO
     [self removeObserver:self forKeyPath:@"dataArray"];
 }
 #pragma mark-----UITableViewDataSource-----
@@ -80,7 +82,6 @@
     int count=arc4random() %3;
    NSMutableArray*mut=[[NSMutableArray alloc] init];
     for (int i=0; i<count; i++) {
-        
     [mut addObject:[NSString stringWithFormat:@"第%d条数据",i]];
 //  [self.dataArray addObject:[NSString stringWithFormat:@"第%d条数据",i]];//不会触发KVO
     }

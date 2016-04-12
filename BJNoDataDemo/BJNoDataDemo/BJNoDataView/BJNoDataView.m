@@ -33,6 +33,7 @@
         _iconView.contentMode=UIViewContentModeScaleAspectFit;
         _iconView.userInteractionEnabled=YES;
         [_iconView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageViewClicked)]];
+        _iconView.frame=CGRectMake(0, 0, 100, 100);
     }
     return _iconView;
 }
@@ -58,8 +59,8 @@
 }
 -(void)setFrame:(CGRect)frame{
     [super setFrame:frame];
-    //设置iconView的Frame
-    self.iconView.frame=CGRectMake(0, 0, 100, 100);
+    //设置iconView的位置
+ 
     self.iconView.center=self.center;
 }
 #pragma mark----Method----
