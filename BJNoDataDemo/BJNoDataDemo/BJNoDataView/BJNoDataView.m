@@ -86,15 +86,11 @@
 }
 -(void)showCenterWithSuperView:(UIView *)aview icon:(NSString *)icon iconClicked:(iconClicked)iconClicked{
     [self showCenterWithSuperView:aview icon:icon];
-    self.iconClicked=^{
-        !iconClicked?: iconClicked();
-    };
+    self.iconClicked=iconClicked;
 }
 -(void)showWithSuper:(UIView *)aview Frame:(CGRect)frame icon:(NSString *)icon iconClicked:(iconClicked)iconClicked{
     [self showWithSuper:aview Frame:frame icon:icon];
-    self.iconClicked=^{
-           !iconClicked?: iconClicked();
-    };
+    self.iconClicked=iconClicked;
 }
 -(void)imageViewClicked{
     if (!self.iconClicked) return;
